@@ -31,13 +31,13 @@ void coind_aux_build_auxs(YAAMP_JOB_TEMPLATE *templ)
 			YAAMP_COIND *coind = (YAAMP_COIND *)li->data;
 			if(!coind_can_mine(coind, true)) continue;
 
-			CommonLock(^coind->aux_mutex);
+			CommonLock(coind->aux_mutex);
 			int pos = (int)(int64_t)((1103515245 * coind->aux.chainid + 1103515245 * (int64_t)12345 + 12345) % templ->auxs_size);
 			if(templ->auxs[pos])
 			{
-				for(int j=0; j<temp1->auxs_size; j++) {
-					if (temp1->auxs[j]) {
-						free(temp1->auxs[j]); temp1->auxs[j] = NULL;
+				for(int j=0; j<templ->auxs_size; j++) {
+					if (templ->auxs[j]) {
+						free(templ->auxs[j]); templ->auxs[j] = NULL;
 					}
 				}
 
@@ -45,7 +45,7 @@ void coind_aux_build_auxs(YAAMP_JOB_TEMPLATE *templ)
 				memset(templ->auxs, 0, sizeof(templ->auxs));
 
 				done = false;
-				CommonUnlock(&coin->aux_mut
+				CommonUnlock(coin->aux_mutex);
 				break;
 			}
 
