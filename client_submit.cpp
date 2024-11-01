@@ -195,10 +195,10 @@ static void client_do_submit(YAAMP_CLIENT* client, YAAMP_JOB* job, YAAMP_JOB_VAL
 
 
 		YAAMP_COIND_AUX *current_aux;
-		current_aux = temp1->aux[i];
+		current_aux = templ->aux[i];
 
 		unsigned char target_aux[1024];
-		binlify(target_aux, current_aux->aux.target);
+		binlify(target_aux, current_aux->target);
 
 		uint64_t coin_target_aux = get_hash_difficulty(target_aux);
 		if ((hash_int <= coin_target_aux) && (!current_aux->skip_submitblock))
