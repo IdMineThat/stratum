@@ -195,7 +195,7 @@ static void client_do_submit(YAAMP_CLIENT* client, YAAMP_JOB* job, YAAMP_JOB_VAL
 
 
 		YAAMP_COIND_AUX *current_aux;
-		current_aux = templ->aux[i];
+		current_aux = templ->auxs[i];
 
 		unsigned char target_aux[1024];
 		binlify(target_aux, current_aux->target);
