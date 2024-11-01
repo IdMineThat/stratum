@@ -45,7 +45,7 @@ void coind_aux_build_auxs(YAAMP_JOB_TEMPLATE *templ)
 				memset(templ->auxs, 0, sizeof(templ->auxs));
 
 				done = false;
-				CommonUnlock(coin->aux_mutex);
+				CommonUnlock(&coind->aux_mutex);
 				break;
 			}
 
